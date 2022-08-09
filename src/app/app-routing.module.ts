@@ -4,12 +4,16 @@ import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
   {
-    path: '**', component: AuthComponent
-  }
+    path: '',
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
+  },
+  { path: 'auth', component: AuthComponent },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
