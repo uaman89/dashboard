@@ -5,19 +5,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HeaderModule } from './core/components/header/header.module';
-import { AuthPageComponent } from './pages/auth/auth.page.component';
 import { DashboardPageModule } from './pages/dashboard/dashboard-page.module';
+import { AuthPageModule } from './pages/auth/auth-page.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AuthPageComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HeaderModule,
+    AuthPageModule,
     DashboardPageModule
   ],
   providers: [],
