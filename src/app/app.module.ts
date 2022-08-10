@@ -5,16 +5,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HeaderModule } from './core/components/header/header.module';
+import { AuthPageComponent } from './pages/auth/auth.page.component';
+import { DashboardPageModule } from './pages/dashboard/dashboard-page.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AuthPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HeaderModule
+    HeaderModule,
+    DashboardPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
