@@ -1,4 +1,20 @@
-<mat-toolbar>
+<mat-toolbar class="toolbar">
   <span>Dashboard</span>
+
+
+  <div
+    *ngIf="(user$ | async) as userInfo"
+    class="user"
+  >
+    <span class="user-name">{{userInfo.name}}</span>
+
+    <button
+      mat-icon-button
+      aria-label="logout button"
+      (click)="logout()"
+    >
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
 </mat-toolbar>
 

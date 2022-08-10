@@ -14,7 +14,7 @@ export class AuthComponent implements OnInit {
   }
 
   authorize() {
-    this.authService.login({userToken: 'abc-0000'});
+    this.authService.login({name: 'FakeUser'});
   }
 
 }

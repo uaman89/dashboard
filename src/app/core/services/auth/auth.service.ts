@@ -1,25 +1,42 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, ReplaySubject } from 'rxjs';
+import { CurrentUser } from '../../../enttities/auth/users.entity';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private router: Router) { }
+  private user$ = new ReplaySubject<CurrentUser>(1);
 
-  isAuthorized(): boolean {
-    const user = localStorage.getItem('user');
-    return !!user;
+  constructor(private router: Router) {
+
   }
 
-  login(params: object) {
-    localStorage.setItem('user', JSON.stringify(params));
+  getUser(): Observable<CurrentUser> {
+    return this.user$.asObservable();
+  }
+
+  isAuthorized(): boolean {
+    const userData = JSON.parse(localStorage.getItem('user') || '') || null;
+    this.user$.next(userData);
+
+    return !!userData;
+  }
+
+  login(params: { name: string }) {
+    const userData = {
+      name: params.name
+    }
+    localStorage.setItem('user', JSON.stringify(userData));
+    this.user$.next(userData);
     this.router.navigate(['']);
   }
 
   logout() {
     localStorage.removeItem('user');
+    this.user$.next(null);
     this.router.navigate(['/auth']);
   }
 }
