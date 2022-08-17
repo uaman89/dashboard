@@ -21,4 +21,7 @@ export class HeaderComponent implements OnInit {
     this.authService.logout({ returnTo: window.location.origin });
   }
 
+  toggleMenu() {
+    // todo: implement
+  }
 }
