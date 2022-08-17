@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../core/services/auth/auth.service';
+import { AuthService } from '@auth0/auth0-angular';
+
 
 @Component({
   selector: 'app-auth',
@@ -8,13 +9,13 @@ import { AuthService } from '../../core/services/auth/auth.service';
 })
 export class AuthComponent implements OnInit {
 
-  constructor( private authService: AuthService) { }
+  constructor( public auth: AuthService ) { }
 
   ngOnInit(): void {
   }
 
-  authorize() {
-    this.authService.login({name: 'FakeUser'});
+  loginWithRedirect(): void {
+    this.auth.loginWithRedirect();
   }
 
 }

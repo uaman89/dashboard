@@ -3,4 +3,11 @@
 login: [ ]
 pass: [ ]
 <br>
-<button mat-raised-button color="primary" (click)="authorize()">Authorize</button>
+<button
+  *ngIf="(auth.isAuthenticated$ | async) === false"
+  (click)="loginWithRedirect()"
+  mat-raised-button
+  color="primary"
+>
+  Authorize
+</button>

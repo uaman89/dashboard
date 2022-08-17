@@ -3,10 +3,10 @@
 
 
   <div
-    *ngIf="(user$ | async) as userInfo"
+    *ngIf="(isAuthenticated$ | async)"
     class="user"
   >
-    <span class="user-name">{{userInfo.name}}</span>
+    <span class="user-name">{{(user$ | async)?.name}}</span>
 
     <button
       mat-icon-button

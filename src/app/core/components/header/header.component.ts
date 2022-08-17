@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth/auth.service';
-import { Observable } from 'rxjs';
-import { CurrentUser } from '../../../enttities/auth/users.entity';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-header',
@@ -10,17 +8,17 @@ import { CurrentUser } from '../../../enttities/auth/users.entity';
 })
 export class HeaderComponent implements OnInit {
 
-  user$!: Observable<CurrentUser>;
+  readonly user$ = this.authService.user$;
+  readonly isAuthenticated$ = this.authService.isAuthenticated$;
 
   constructor( private authService: AuthService ) {
-    this.user$ = this.authService.getUser();
   }
 
   ngOnInit(): void {
   }
 
-  logout() {
-    this.authService.logout();
+  logout(): void {
+    this.authService.logout({ returnTo: window.location.origin });
   }
 
 }
