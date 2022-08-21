@@ -9,6 +9,7 @@ import { HeaderModule } from './core/components/header/header.module';
 import { DashboardPageModule } from './pages/dashboard/dashboard-page.module';
 import { AuthPageModule } from './pages/auth/auth-page.module';
 import { environment } from '../environments/environment';
+import { AppStoreModule } from './app-store.module';
 
 @NgModule({
   declarations: [
@@ -18,10 +19,12 @@ import { environment } from '../environments/environment';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+
+    AppStoreModule,
     HeaderModule,
     AuthPageModule,
     AuthModule.forRoot(environment.auth),
-    DashboardPageModule
+    DashboardPageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
