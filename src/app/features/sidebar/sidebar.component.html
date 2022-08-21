@@ -1,7 +1,12 @@
-<h4>Navigation</h4>
-
 <ul class="menu-list">
   <li *ngFor="let item of items">
-    <a [routerLink]="item.path">{{item.title}}</a>
+    <button
+      [routerLink]="item.path"
+      routerLinkActive="active-nav-item"
+      mat-button
+      class="nav-item"
+    >
+      {{item.title}}
+    </button>
   </li>
 </ul>

@@ -4,6 +4,6 @@ export interface SidebarItem {
 }
 
 export const SIDEBAR_ITEMS: SidebarItem[] = [
+  { title: 'Tasks', path: '/tasks'},
   { title: 'Users', path: '/users'},
-  { title: 'Tasks', path: '/tasks'}
 ]
