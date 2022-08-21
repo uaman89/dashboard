@@ -20,11 +20,7 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     HeaderModule,
     AuthPageModule,
-    AuthModule.forRoot({
-      domain: environment.auth.domain,
-      clientId: environment.auth.clientId,
-      redirectUri: `${environment.baseUrl}/auth`,
-    }),
+    AuthModule.forRoot(environment.auth),
     DashboardPageModule
   ],
   providers: [],
