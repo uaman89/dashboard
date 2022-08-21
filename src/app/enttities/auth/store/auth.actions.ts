@@ -1,6 +1,5 @@
-import { createAction, props } from '@ngrx/store';
-import { AuthType } from './auth.enums';
-import { User } from '@auth0/auth0-spa-js';
+import { createAction } from '@ngrx/store';
 
-export const setUser = createAction(AuthType.setUser, props<{ user: User }>());
-export const logout = createAction(AuthType.logout);
+export const login = createAction('[Auth] Login');
+export const logout = createAction('[Auth] Logout');
+export const getUser = createAction('[Auth] Get User');
