@@ -1,8 +1,5 @@
-<h3>Login</h3>
-<br>
-login: [ ]
-pass: [ ]
-<br>
+<h1>Login</h1>
+
 <button
   *ngIf="(auth.isAuthenticated$ | async) === false"
   (click)="loginWithRedirect()"

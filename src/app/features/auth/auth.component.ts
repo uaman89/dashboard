@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 
 
@@ -7,12 +7,9 @@ import { AuthService } from '@auth0/auth0-angular';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent {
 
   constructor( public auth: AuthService ) { }
-
-  ngOnInit(): void {
-  }
 
   loginWithRedirect(): void {
     this.auth.loginWithRedirect();
