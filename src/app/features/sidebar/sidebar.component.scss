@@ -1,0 +1,26 @@
+@import "src/app/styles/colors";
+
+:host {
+  display: block;
+  min-width: 100%;
+}
+
+.menu-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    border-bottom: 1px solid #778899;
+  }
+}
+
+.nav-item {
+  color: $mid-dark;
+}
+
+.active-nav-item {
+  font-weight: bolder;
+  color: $dark;
+}
+

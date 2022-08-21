@@ -1,20 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../core/services/auth/auth.service';
+import { Component } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
+
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent {
 
-  constructor( private authService: AuthService) { }
+  constructor( public auth: AuthService ) { }
 
-  ngOnInit(): void {
-  }
-
-  authorize() {
-    this.authService.login({userToken: 'abc-0000'});
+  loginWithRedirect(): void {
+    this.auth.loginWithRedirect();
   }
 
 }

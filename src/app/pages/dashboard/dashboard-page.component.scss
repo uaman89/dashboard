@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  flex: 1 0 auto;
+}
+
+.container {
+  display: block;
+  width: 100%;
+}
+
+.sidebar {
+  padding: 8px;
+}
+
+.content {
+  padding: 8px 16px 32px 16px;
+}
+

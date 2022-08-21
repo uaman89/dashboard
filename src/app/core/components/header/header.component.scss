@@ -1,0 +1,11 @@
+@import "src/app/styles/colors";
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-name {
+  padding: 0 16px;
+  color: $dark;
+}
