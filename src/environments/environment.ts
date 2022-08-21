@@ -7,8 +7,10 @@ export const environment = {
   auth: {
     domain: 'dev-k5a1ay0t.us.auth0.com',
     clientId: '986zTIelfSpie45jXu5gbjtGy0sFPJPN',
+    // domain: 'dev-efl5gep7.us.auth0.com',
+    // clientId: '1jVql0FeSqznB0AbFe88YrbvDwo3Sa5c',
+    redirectUri: `http://localhost:4200/auth`,
   },
-  baseUrl: 'http://localhost:4200'
 };
 
 /*
