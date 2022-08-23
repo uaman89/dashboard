@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
+import { AuthFacadeService } from '../../../enttities/auth/auth.facade.service';
 
 @Component({
   selector: 'app-header',
@@ -8,17 +8,17 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class HeaderComponent implements OnInit {
 
-  readonly user$ = this.authService.user$;
-  readonly isAuthenticated$ = this.authService.isAuthenticated$;
+  readonly user$ = this.auth.getUser();
+  readonly isAuthenticated$ = this.auth.isAuthenticated();
 
-  constructor( private authService: AuthService ) {
+  constructor( private auth: AuthFacadeService ) {
   }
 
   ngOnInit(): void {
   }
 
   logout(): void {
-    this.authService.logout({ returnTo: window.location.origin });
+    this.auth.logout();
   }
 
 }
