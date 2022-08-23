@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { User } from '@auth0/auth0-spa-js';
 import { AuthService } from '@auth0/auth0-angular';
 import { Store } from '@ngrx/store';
-import { map, take } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 import { setUser } from './store/auth.actions';
-import { Observable, of } from 'rxjs';
+import { selectUser } from './store/auth.selectors';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +21,7 @@ export class AuthFacadeService {
    * emitted once, then complete
    */
   getUser(): Observable<User | null> {
-    //todo: return selector
-    return of({ name: 'Fake User' } as User);
+    return this.store.select(selectUser);
   }
 
   isAuthenticated(): Observable<boolean> {
@@ -28,8 +29,10 @@ export class AuthFacadeService {
   }
 
   setUser(user: User): void {
-    //todo: ASK/Google - why can't set null?
-    this.store.dispatch(setUser(user || {}));
+    // todo: ASK - looks like dispatch always wrap "payload" in object and add type,
+    // so for null value it comes - {type: '[Auth]: Set User'}
+    // wrapping in {} solves the "problem": (user) -> ({user})
+    this.store.dispatch(setUser({ user }));
   }
 
   private subscribeForUserChanges() {

@@ -13,6 +13,7 @@ import { DashboardPageModule } from './pages/dashboard/dashboard-page.module';
 import { AuthPageModule } from './pages/auth/auth-page.module';
 import { environment } from '../environments/environment';
 import { authReducer } from './enttities/auth/store/auth.reducer';
+import { AUTH_STORE_KEY } from './enttities/auth/store/auth.enums';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { authReducer } from './enttities/auth/store/auth.reducer';
     // todo: ASK - is it possible to move all Store configuration to separate module,
     // and import it here
     StoreModule.forRoot({
-        auth: authReducer
+        [AUTH_STORE_KEY]: authReducer
       },
       // todo: read about config
       {}
