@@ -4,12 +4,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from '@auth0/auth0-angular';
 
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 import { AppComponent } from './app.component';
 import { HeaderModule } from './core/components/header/header.module';
 import { DashboardPageModule } from './pages/dashboard/dashboard-page.module';
 import { AuthPageModule } from './pages/auth/auth-page.module';
 import { environment } from '../environments/environment';
-import { StoreModule } from '@ngrx/store';
 import { authReducer } from './enttities/auth/store/auth.reducer';
 
 @NgModule({
@@ -23,7 +25,7 @@ import { authReducer } from './enttities/auth/store/auth.reducer';
 
     AuthModule.forRoot(environment.auth),
     //AppStoreModule,
-    // todo: is it possible to move all Store configuration to separate module,
+    // todo: ASK - is it possible to move all Store configuration to separate module,
     // and import it here
     StoreModule.forRoot({
         auth: authReducer
@@ -31,6 +33,11 @@ import { authReducer } from './enttities/auth/store/auth.reducer';
       // todo: read about config
       {}
     ),
+    // todo: ASK - is this a correct way to use ReduxDevTools? is it ReduxDevTools extensions should be used, or another one?
+    StoreDevtoolsModule.instrument({
+      name: 'Dashboard App',
+      logOnly: environment.production
+    }),
 
     HeaderModule,
     AuthPageModule,

@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
-import { login, logout } from './auth.actions';
+import { setUser } from './auth.actions';
 import { AuthStore } from '../auth-store.interface';
+import { User } from '@auth0/auth0-spa-js';
 
 export const initialState: AuthStore = {
   user: null,
@@ -8,11 +9,7 @@ export const initialState: AuthStore = {
 
 export const authReducer = createReducer(
   initialState,
-  on(login, (state) => {
-    //todo: get real user from auth0.service
-    return { ...state, user: { name: 'Fake user'} };
-  }),
-  on(logout, (state) => {
-    return { ...state, user: null };
+  on(setUser, (state, user: User) => {
+    return { ...state, user };
   }),
 );
