@@ -9,7 +9,6 @@ import { AuthFacadeService } from '../../../enttities/auth/auth.facade.service';
 export class HeaderComponent implements OnInit {
 
   readonly user$ = this.auth.getUser();
-  readonly isAuthenticated$ = this.auth.isAuthenticated();
 
   constructor( private auth: AuthFacadeService ) {
   }
