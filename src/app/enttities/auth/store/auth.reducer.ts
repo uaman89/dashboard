@@ -9,7 +9,7 @@ export const initialState: AuthStore = {
 export const authReducer = createReducer(
   initialState,
   on(login, (state) => {
-    //todo: get real user from auth0.servise
+    //todo: get real user from auth0.service
     return { ...state, user: { name: 'Fake user'} };
   }),
   on(logout, (state) => {

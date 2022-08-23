@@ -5,12 +5,12 @@ import { AuthPageComponent } from './pages/auth/auth-page.component';
 import { AuthGuard } from './features/auth/auth.guard';
 
 const routes: Routes = [
+  { path: 'auth', component: AuthPageComponent },
   {
     path: '',
     loadChildren: () => import('./pages/dashboard/dashboard-page.module').then(m => m.DashboardPageModule),
     canActivate: [AuthGuard]
   },
-  { path: 'auth', component: AuthPageComponent },
   { path: '**', redirectTo: '' },
 ];
 
