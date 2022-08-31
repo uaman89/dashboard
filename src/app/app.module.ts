@@ -14,6 +14,8 @@ import { AuthPageModule } from './pages/auth/auth-page.module';
 import { environment } from '../environments/environment';
 import { authReducer } from './enttities/auth/store/auth.reducer';
 import { AUTH_STORE_KEY } from './enttities/auth/store/auth.enums';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './enttities/auth/store/auth.effect';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,9 @@ import { AUTH_STORE_KEY } from './enttities/auth/store/auth.enums';
       // todo: read about config
       {}
     ),
+
+    EffectsModule.forRoot([AuthEffects]),
+
     // todo: ASK - is this a correct way to use ReduxDevTools? is it ReduxDevTools extensions should be used, or another one?
     StoreDevtoolsModule.instrument({
       name: 'Dashboard App',

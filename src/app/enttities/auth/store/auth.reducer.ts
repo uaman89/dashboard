@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { logout, setUser } from './auth.actions';
+import { loginFail, loginSuccess, logout, logoutSuccess, setUser } from './auth.actions';
 import { AuthStore } from '../auth-store.interface';
 
 export const initialState: AuthStore = {
@@ -9,12 +9,14 @@ export const initialState: AuthStore = {
 export const authReducer = createReducer(
   initialState,
   on(
+    loginFail,
+    logout,
+    logoutSuccess,
+    state => ({ ...state, user: null })
+  ),
+  on(
+    loginSuccess,
     setUser,
     (state, { user }) => ({ ...state, user })
-  ),
-  // todo: does it has sense? never user though...
-  on(
-    logout,
-    state => ({ ...state, user: null })
   ),
 );
