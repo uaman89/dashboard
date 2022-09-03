@@ -28,6 +28,10 @@ export class AuthFacadeService {
     return this.auth.isAuthenticated$;
   }
 
+  login() {
+    this.auth.loginWithRedirect()
+  }
+
   logout(): void {
     this.store.dispatch(logout());
   }
@@ -35,4 +39,5 @@ export class AuthFacadeService {
   private subscribeForUserChanges() {
     this.store.dispatch(subscribeForUser());
   }
+
 }

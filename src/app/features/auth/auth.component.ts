@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
+import { AuthFacadeService } from '../../enttities/auth/auth.facade.service';
 
 
 @Component({
@@ -9,10 +9,10 @@ import { AuthService } from '@auth0/auth0-angular';
 })
 export class AuthComponent {
 
-  constructor( public auth: AuthService ) { }
+  constructor( public auth: AuthFacadeService ) { }
 
   loginWithRedirect(): void {
-    this.auth.loginWithRedirect();
+    this.auth.login();
   }
 
 }
