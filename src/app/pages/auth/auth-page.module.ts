@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthModule } from '../../features/auth/auth.module';
+import { AuthFeatureModule } from '../../features/auth/auth-feature.module';
 import { AuthPageComponent } from './auth-page.component';
 
 
@@ -9,7 +9,7 @@ import { AuthPageComponent } from './auth-page.component';
   declarations: [ AuthPageComponent],
   imports: [
     CommonModule,
-    AuthModule
+    AuthFeatureModule
   ]
 })
 export class AuthPageModule { }

@@ -9,7 +9,9 @@ import { AuthFacadeService } from '../../enttities/auth/auth.facade.service';
 })
 export class AuthComponent {
 
-  constructor( public auth: AuthFacadeService ) { }
+  isAuthenticated$ = this.auth.isAuthenticated();
+
+  constructor( private auth: AuthFacadeService ) { }
 
   loginWithRedirect(): void {
     this.auth.login();

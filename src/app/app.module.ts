@@ -27,15 +27,7 @@ import { AuthEffects } from './enttities/auth/store/auth.effect';
     AppRoutingModule,
 
     AuthModule.forRoot(environment.auth),
-    //AppStoreModule,
-    // todo: ASK - is it possible to move all Store configuration to separate module,
-    // and import it here
-    StoreModule.forRoot({
-        [AUTH_STORE_KEY]: authReducer
-      },
-      // todo: read about config
-      {}
-    ),
+    StoreModule.forRoot({[AUTH_STORE_KEY]: authReducer},),
 
     EffectsModule.forRoot([AuthEffects]),
 
