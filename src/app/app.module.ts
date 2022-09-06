@@ -16,6 +16,7 @@ import { authReducer } from './enttities/auth/store/auth.reducer';
 import { AUTH_STORE_KEY } from './enttities/auth/store/auth.enums';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './enttities/auth/store/auth.effect';
+import { UsersStoreModule } from "./enttities/users/users-store/users-store.module";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,6 @@ import { AuthEffects } from './enttities/auth/store/auth.effect';
 
     AuthModule.forRoot(environment.auth),
     StoreModule.forRoot({[AUTH_STORE_KEY]: authReducer},),
-
     EffectsModule.forRoot([AuthEffects]),
 
     // todo: ASK - is this a correct way to use ReduxDevTools? is it ReduxDevTools extensions should be used, or another one?
@@ -41,7 +41,12 @@ import { AuthEffects } from './enttities/auth/store/auth.effect';
     AuthPageModule,
     DashboardPageModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'API_BASE',
+      useValue: environment.apiBaseUrl
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
