@@ -10,6 +10,7 @@ export class UsersApiService {
 
   constructor( private http: HttpClient, @Inject('API_BASE') private apiBase: string) { }
 
+  // todo: implement params passing to api
   loadUsers(params?: object): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiBase}/users`);
   }
