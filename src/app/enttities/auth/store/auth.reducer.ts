@@ -1,20 +1,18 @@
-import { createReducer, on } from '@ngrx/store';
-import { logout, setUser } from './auth.actions';
-import { AuthStore } from '../auth-store.interface';
+import {createReducer, on} from '@ngrx/store';
+import {loginFail, loginSuccess} from './auth.actions';
+import {AuthStore} from '../auth-store.interface';
 
 export const initialState: AuthStore = {
   user: null,
 };
 
-export const authReducer = createReducer(
+export const authReducer = createReducer<AuthStore>(
   initialState,
   on(
-    setUser,
-    (state, { user }) => ({ ...state, user })
-  ),
-  // todo: does it has sense? never user though...
+    loginFail,
+    (state): AuthStore => ({...state, user: null})),
   on(
-    logout,
-    state => ({ ...state, user: null })
+    loginSuccess,
+    (state, {user}): AuthStore => ({...state, user})
   ),
 );
