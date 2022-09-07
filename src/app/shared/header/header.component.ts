@@ -1,19 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthFacadeService } from '../../../enttities/auth/auth.facade.service';
+import { Component } from '@angular/core';
+import { AuthFacadeService } from '../../enttities/auth/auth.facade.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   readonly user$ = this.auth.getUser();
 
   constructor( private auth: AuthFacadeService ) {
-  }
-
-  ngOnInit(): void {
   }
 
   logout(): void {

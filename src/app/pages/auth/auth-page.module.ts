@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthFeatureModule } from '../../features/auth/auth-feature.module';
+import { AuthFeatureModule } from '../../core/auth/auth-feature.module';
 import { AuthPageComponent } from './auth-page.component';
 
 
