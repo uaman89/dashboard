@@ -1,5 +1,3 @@
 <h1>Users</h1>
 
-<app-users-grid></app-users-grid>
-
-{{ (usersData$|async) | json }}
+<app-users-grid [gridData]="(usersData$ | async)!"></app-users-grid>

@@ -4,6 +4,14 @@ import { loadUsersSuccess } from "./users.actions";
 
 export const initialState: UsersStore = {
   users: [],
+  paginator: {
+    pageIndex: 0,
+    pageSize: 10
+  },
+  sort: {
+    active: 'name',
+    direction: 'asc'
+  }
 };
 
 export const usersFeature = createFeature({
@@ -12,7 +20,7 @@ export const usersFeature = createFeature({
     initialState,
     on(loadUsersSuccess, (state, {users}) => ({
       ...state,
-      users,
+      users: users || [],
     }))
   ),
 });
@@ -21,5 +29,6 @@ export const {
   name, // feature name
   reducer, // feature reducer
   selectUsersState, // feature selector
-  selectUsers, // selector for `users` property
 } = usersFeature;
+
+
