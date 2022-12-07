@@ -8,7 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
-import { HeaderModule } from './core/components/header/header.module';
+import { HeaderModule } from './shared/header/header.module';
 import { DashboardPageModule } from './pages/dashboard/dashboard-page.module';
 import { AuthPageModule } from './pages/auth/auth-page.module';
 import { environment } from '../environments/environment';
@@ -27,8 +27,7 @@ import { AuthEffects } from './enttities/auth/store/auth.effect';
     AppRoutingModule,
 
     AuthModule.forRoot(environment.auth),
-    StoreModule.forRoot({[AUTH_STORE_KEY]: authReducer},),
-
+    StoreModule.forRoot({[AUTH_STORE_KEY]: authReducer,},),
     EffectsModule.forRoot([AuthEffects]),
 
     // todo: ASK - is this a correct way to use ReduxDevTools? is it ReduxDevTools extensions should be used, or another one?
@@ -41,7 +40,12 @@ import { AuthEffects } from './enttities/auth/store/auth.effect';
     AuthPageModule,
     DashboardPageModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'API_BASE',
+      useValue: environment.apiBaseUrl
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
